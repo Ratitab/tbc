@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TbcSvg from "../../assets/tbcSvg";
 import { routes } from "../../utils/routes";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import Drawer from "./drawer";
 
 const DefaultHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,7 +29,7 @@ const DefaultHeader: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log(width, 'width')
+  console.log(width, "width");
 
   return (
     <header
@@ -71,6 +72,13 @@ const DefaultHeader: React.FC = () => {
           </div>
         )}
       </div>
+      {isMenuOpen && (
+        <Drawer
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(!isMenuOpen)}
+          routes={routes}
+        />
+      )}
     </header>
   );
 };
